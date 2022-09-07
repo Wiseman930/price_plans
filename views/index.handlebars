@@ -10,46 +10,24 @@
 
 <body>
     <h1>Total Phone Bill Price Plan</h1>
-    <h2>Allocate Price Plan to Username</h2>
-
-
-    <form action="/" method="POST">
+    <h2>Phone Bill Widget</h2>
+    <form action="/sum" method="POST">
         <div class="Usertextbox">
             <label class="RG" for="fReg">Username</label>
-            <input type="text" name="Entername" value="" placeholder="enter user name (e.g Wiseman, John)" class="fReg">
+            <input type="text" name="EnterMain" value="" placeholder="enter user name (e.g Wiseman, John)" class="fReg">
         </div>
-        <div class="Username">
-            <label class="townText" for="towns">Price Plan</label>
-            <select id="banks" name="planType" class="priceplan_name" aria-label="State">
-                <option value="">Select Price Plan</option>
-                <option value="sms100">SMS 100</option>
-                <option value="sms200">SMS 200</option>
-                <option value="callWeek">Call Weekly</option>
-            </select>
+        <div class="Usertextbox">
+            <label class="RG" for="fReg">Usage String</label>
+            <input type="text" name="EnterMainString" value="" placeholder="enter user string (e.g sms100, sms200)" class="fReg">
         </div>
         <div class="price_add">
-            <button class="button-primary AddButtn" type="submit" name="button">Allocate</button>
+            <button class="button-primary AddButtn" type="submit" name="button">Calculate total phone bill</button>
         </div>
     </form>
-    <div class="view_prices">
-    <h2>Price Plans</h2>
-    <table>
-        <tr>
-            <td>SMS 100</td>
-            <td>view users</td>
-        </tr>
-        <tr>
-            <td>SMS 200</td>
-            <td>view users</td>
-        </tr>
-        <tr>
-            <td>CALL WEEKLY</td>
-            <td>view users</td>
-        </tr>
-    </table>
-    </div>
-
-
+   <h3> <label>Phone Bill Total:</label><span> Total here</span> <h3>
+                <div class="AllocateNames">
+                <a href="/allocate">Allocate Names Here</a>
+            </div>
 </body>
 
 </html>

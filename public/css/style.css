@@ -15,6 +15,7 @@ h2{
 }
 .Usertextbox{
 text-align: center;
+margin-top: 10px;
 }
 .Username{
     text-align: center;
@@ -28,4 +29,15 @@ table, th, td {
     margin: auto;
     padding: 8px;
   }
+.AllocateNames{
+    text-align: center;
+    padding-top: 45px;
+}
+h3{
+    text-align: center;
+}
+.resetButtn{
+    transform: translateY(-31.6px) translateX(90px);
+}
+
 

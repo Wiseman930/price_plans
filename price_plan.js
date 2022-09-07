@@ -1,5 +1,6 @@
 module.exports = function pricePlanning(db){
     let dataPlanNames;
+    let error;
 
 
     async function resetAll(){
@@ -11,9 +12,21 @@ module.exports = function pricePlanning(db){
         let storedFKey = await db.oneOrNone('SELECT id FROM pricing_plans WHERE plan_name=$1', [plan])
 
         checkName = await db.oneOrNone('SELECT user_names FROM users WHERE user_names =$1', [giveMeName])
-        if(checkName == null && giveMeName != ''){
+        if(checkName == null && giveMeName != '' && plan != ''){
 
             await db.none('INSERT INTO users(user_names, link_id) values($1, $2)', [giveMeName, storedFKey.id])
+        }
+        if(plan =='' && giveMeName == ''){
+
+            error = "please enter user and price plan"
+        }
+        else if(plan !='' && giveMeName == ''){
+
+            error = "please enter user"
+        }
+        else if(plan =='' && giveMeName != ''){
+
+            error = "please enter price plan"
         }
     }
     async function namesFromDatabase(plan){
@@ -29,14 +42,22 @@ module.exports = function pricePlanning(db){
         }
         return dataPlanNames
     }
-    async function sumForUser(name, plan){
+    /*async function sumForUser(name, plan){
+        let uppCase = name.toUpperCase()
+        let storedName = await db.oneOrNone('SELECT id FROM sms_price WHERE plan_name=$1', [uppCase])
+        let smsSumming = await db.oneOrNone('SELECT id FROM sms_price WHERE plan_name=$1', [plan])
+        let callSumming = await db.oneOrNone('SELECT id FROM call_price WHERE plan_name=$1', [plan])
 
+    }*/
+    function returnError(){
+        return error;
     }
 
 return {
     AllocatingPeople,
     resetAll,
     namesFromDatabase,
-    sumForUser
+    returnError
+    //sumForUser
 }
 }

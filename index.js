@@ -18,9 +18,9 @@ const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:pg1999@l
 
 const config = {
   connectionString: DATABASE_URL,
- /*ssl: {
+ ssl: {
     rejectUnauthorized: false,
-  },*/
+  },
 };
 
 const db = pgp(config);
@@ -44,8 +44,8 @@ app.use(
 app.get('/', function (req, res) {
     res.render('index');
   });
-app.get('/allocate', function (req, res) {
-    res.render('allocate');
+app.get('/allocate', async function (req, res) {
+    res.render('allocate', {myError: await UsingNames.returnError()});
   });
 
 
@@ -55,7 +55,7 @@ app.get('/allocate', function (req, res) {
     res.render('viewusers', { UsersFor: await UsingNames.namesFromDatabase(req.params.planType)});
   });
   app.post('/sum',async function (req, res) {
-    await UsingNames.sumForUser(req.body.EnterMain, req.body.EnterMainString)
+    //await UsingNames.sumForUser(req.body.EnterMain, req.body.EnterMainString)
     res.redirect('/')
 });
 

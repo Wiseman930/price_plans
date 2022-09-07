@@ -39,5 +39,10 @@ h3{
 .resetButtn{
     transform: translateY(-31.6px) translateX(90px);
 }
+.error{
+    text-align: center;
+    background-color: antiquewhite;
+    color: red;
+}
 
 

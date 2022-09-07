@@ -1,0 +1,31 @@
+body {
+    background-color: #fefae0;
+
+}
+h1{
+    text-align: center;
+    background-color: #bc6c25;
+    margin: 0px;
+    color: antiquewhite;
+    padding: 15px;
+}
+h2{
+    text-align: center;
+    margin-top: 60px;
+}
+.Usertextbox{
+text-align: center;
+}
+.Username{
+    text-align: center;
+    padding-top: 10px;
+}
+.price_add{
+    text-align: center;
+    padding-top: 10px;
+}
+table, th, td {
+    margin: auto;
+    padding: 8px;
+  }
+

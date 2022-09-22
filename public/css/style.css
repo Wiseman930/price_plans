@@ -2,12 +2,17 @@ body {
     background-color: #fefae0;
 
 }
-h1{
-    text-align: center;
+.head{
+      text-align: center;
     background-color: #bc6c25;
     margin: 0px;
     color: antiquewhite;
     padding: 15px;
+    display: flex;
+
+}
+h1{
+    margin: auto;
 }
 h2{
     text-align: center;
@@ -24,6 +29,11 @@ margin-top: 10px;
 .price_add{
     text-align: center;
     padding-top: 10px;
+    transform: translateX(-45px);
+}
+.price_add2{
+    text-align: center;
+    padding-top: 10px;
 }
 table, th, td {
     margin: auto;
@@ -37,7 +47,8 @@ h3{
     text-align: center;
 }
 .resetButtn{
-    transform: translateY(-31.6px) translateX(90px);
+
+    transform: translateY(-31.7px) translateX(90px);
 }
 .error{
     text-align: center;

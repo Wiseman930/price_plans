@@ -1,6 +1,7 @@
 module.exports = function pricePlanning(db){
     let dataPlanNames;
     let error;
+    let usageTotal;
 
 
     async function resetAll(){
@@ -42,22 +43,53 @@ module.exports = function pricePlanning(db){
         }
         return dataPlanNames
     }
-    /*async function sumForUser(name, plan){
+    async function sumForUser(name, usageString){
         let uppCase = name.toUpperCase()
-        let storedName = await db.oneOrNone('SELECT id FROM sms_price WHERE plan_name=$1', [uppCase])
-        let smsSumming = await db.oneOrNone('SELECT id FROM sms_price WHERE plan_name=$1', [plan])
-        let callSumming = await db.oneOrNone('SELECT id FROM call_price WHERE plan_name=$1', [plan])
+        let storedName = await db.oneOrNone('SELECT link_id FROM users WHERE user_names=$1', [uppCase])
+        let sms;
+        let call;
+        let smsCost;
+        let callCost
+        if(storedName !== null){
+         sms = await db.oneOrNone('SELECT sms_price FROM pricing_plans WHERE id=$1', [storedName.link_id])
+         call = await db.oneOrNone('SELECT call_price FROM pricing_plans WHERE id=$1', [storedName.link_id])
+         smsCost = sms.sms_price;
+         callCost = call.call_price;
+        }
+        else if (storedName == null){
+            totalUsage = 0
+        }
 
-    }*/
+        let usage = usageString.split(',');
+        var totalUsage = 0;
+
+        for(var i=0; i<usage.length; i++){
+            var use = usage[i].toUpperCase();
+            if (use == 'CALL'){
+                totalUsage += callCost;
+            }
+            else if (use == 'SMS'){
+                totalUsage += smsCost;
+            }
+        }
+
+         usageTotal =  "R" + totalUsage.toFixed(2);
+
+
+    }
     function returnError(){
         return error;
+    }
+    function returnSumForUser(){
+        return usageTotal
     }
 
 return {
     AllocatingPeople,
     resetAll,
     namesFromDatabase,
-    returnError
-    //sumForUser
+    returnError,
+    sumForUser,
+    returnSumForUser
 }
 }

@@ -41,8 +41,8 @@ app.use(
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
-    res.render('index');
+app.get('/', async function (req, res) {
+    res.render('index', {Total: await UsingNames.returnSumForUser()});
   });
 app.get('/allocate', async function (req, res) {
     res.render('allocate', {myError: await UsingNames.returnError()});
@@ -50,12 +50,10 @@ app.get('/allocate', async function (req, res) {
 
 
   app.get('/viewusers/:planType',async function (req, res) {
-   // console.log(req.params.planType)
-   //console.log(await UsingNames.namesFromDatabase(req.params.planType))
     res.render('viewusers', { UsersFor: await UsingNames.namesFromDatabase(req.params.planType)});
   });
   app.post('/sum',async function (req, res) {
-    //await UsingNames.sumForUser(req.body.EnterMain, req.body.EnterMainString)
+    await UsingNames.sumForUser(req.body.EnterMain, req.body.EnterMainString)
     res.redirect('/')
 });
 

@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <h1>Total Phone Bill Price Plan</h1>
+    <div class="head">
+  <h3><a href="/allocate">Allocate User</a></h3>
+    <h1> Total Phone Bill Price Plan</h1>
+   </div>
     <h2>Phone Bill Widget</h2>
     <form action="/sum" method="POST">
         <div class="Usertextbox">
@@ -18,17 +21,14 @@
         </div>
         <div class="Usertextbox">
             <label class="RG" for="fReg">Usage String</label>
-            <input type="text" name="EnterMainString" value="" placeholder="enter user string (e.g sms100, sms200)" class="fReg">
-            <label class="RG" for="fReg">e.g sms100, sms200, call weekly</label>
+            <input type="text" name="EnterMainString" value="" placeholder="enter user string (sms, call, sms)" class="fReg">
+            <label class="RG" for="fReg"></label>
         </div>
-        <div class="price_add">
+        <div class="price_add2">
             <button class="button-primary AddButtn" type="submit" name="button">Calculate total phone bill</button>
         </div>
     </form>
-   <h3> <label>Phone Bill Total:</label><span> Total here</span> <h3>
-                <div class="AllocateNames">
-                <a href="/allocate">Allocate Names Here</a>
-            </div>
+   <h3> <label>Phone Bill Total:</label><span>{{Total}}</span> <h3>
 </body>
 
 </html>
